@@ -104,10 +104,12 @@ eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz")
 const aleatordfgio = ()=> console.info(Math.round(Math.random()*100 + 500))
 
 aleatordfgio()
-/*10) Programa una función que reciba un número 
+/*
+10) Programa una función que reciba un número 
 y evalúe si es capicúa o no (que se lee 
 igual en un sentido que en otro),
-pe. miFuncion(2002) devolverá true.*/
+pe. miFuncion(2002) devolverá true.
+*/
 const capicua = (numero = 0) => {
     if(!numero) return console.warn("no ingresaste un numeroi")
     if(typeof numero !== "number") return console.warn("no es un numero")
@@ -120,7 +122,8 @@ const capicua = (numero = 0) => {
     }
 }
 capicua(545)
-/* 11) Programa una función que calcule el factorial de un número 
+/* 
+11) Programa una función que calcule el factorial de un número 
 (El factorial de un entero positivo n, se define como el producto de todos 
 los números enteros positivos desde 1 hasta n), pe. 
 miFuncion(5) devolverá 120.
