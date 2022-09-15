@@ -274,10 +274,7 @@ La clase recibirá un objeto al momento de instanciarse
   - Valida que el título no rebase los 100 caracteres.
   - Valida que el director no rebase los 50 caracteres.
   - Valida que el año de estreno sea un número entero de 4 dígitos.
-  - Valida que el país o paises sea introducidos en forma de arreglo.
-  - Valida que los géneros sean introducidos en forma de arreglo.
-  - Valida que los géneros introducidos esten dentro de los géneros 
-     aceptados*.
+   
   - Crea un método estático que devuelva los géneros aceptados*.
   - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
     decimal de una posición.
@@ -303,10 +300,14 @@ Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy,
       this.géneros = géneros,
       this.calificación = calificación
       this.validarIMDV(id)
+      this.validarTitulo(titulo)
+      this.validarDirector(director)
+      this.validarEstreno(estreno)
+
     }
     validarCadena(propiedad,valor){
       if (!valor) return console.warn("no ingresaste texto")
-      if (typeof valor !== "string") return console.warn("no es una cadena validad") 
+      if (typeof valor !== "string") return console.warn("no es una cadena validad"+ valor +" "+ propiedad) 
       return true
     }
     validadLongitudCadena(propiedad,valor,longitud){
@@ -314,13 +315,27 @@ Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy,
       return true
     }
 
+    validarNumero(propiedad,valor){
+      if(!valor) return console.info("esta vacio")
+      if(typeof valor !== "number") return console.info("no es un numero")
+    }
+
+
+
 
     validarIMDV(id){
       if (this.validarCadena("IMDB id",id)) {
-        if(!/^([a-z]){2}([0-9]){7}$/.test(id)){return console.error("IMDB id" + id )}
+        if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){return console.error("IMDB id" + id )}
       }
+      return true
     }
 
+    validarEstreno(estreno){
+      if (this.validarNumero("año de estreno",estreno)) {
+        if(!(/^([0-9]){4}$/.test(estreno))){return console.error("estreno" + estreno )}
+      }
+      return true
+    }
 
     validarTitulo(titulo){
       if (this.validarCadena("Titulo",titulo)) {
@@ -336,5 +351,8 @@ Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy,
 
   }
 const peli = new Pelicula({
-  id:"tt1234567"
+  id:"rr1234567",
+  titulo:"la-anaconda",
+  director:"Artu"
+  
 })
